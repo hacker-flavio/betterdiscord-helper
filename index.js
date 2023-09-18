@@ -9,9 +9,10 @@ app.use(cors());
 
 app.get("/update-css", (req, res) => {
   const newBackgroundImage = req.query.backgroundImage;
+  console.log(`New background image: ${newBackgroundImage}`);
 
   // Read the CSS file
-  const cssFilePath = "themes/ClearVision_v6.theme.css";
+  const cssFilePath = "../themes/ClearVision_v6.theme.css";
   fs.readFile(cssFilePath, "utf8", (err, data) => {
     if (err) {
       console.error(`Error reading CSS file: ${err}`);
