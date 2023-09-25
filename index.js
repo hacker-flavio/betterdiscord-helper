@@ -7,14 +7,12 @@ const path = require("path");
 
 app.use(express.static("themes"));
 app.use(cors());
-//const cssFilePath = path.join(__dirname, "../themes/ClearVision_v6.theme.css");
 
 app.get("/update-css", (req, res) => {
   const newBackgroundImage = req.query.backgroundImage;
   console.log(`New background image: ${newBackgroundImage}`);
 
   // Read the CSS file
-  // const cssFilePath = "../themes/ClearVision_v6.theme.css";
   const cssFilePath = path.join(
     __dirname,
     "../themes/ClearVision_v6.theme.css"
@@ -26,7 +24,6 @@ app.get("/update-css", (req, res) => {
     }
 
     // Modify the CSS content (for example, change the background image)
-    // Modify the CSS content (update the background image URL)
     const modifiedData = data.replace(
       /--background-image: url\(.*\);/,
       `--background-image: url(${newBackgroundImage});`
@@ -45,5 +42,5 @@ app.get("/update-css", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server: ${__dirname} is running on port ${port}`);
 });
